@@ -1,6 +1,9 @@
 package tokio.aulas.aula06;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 public class Usuario {
 	
@@ -11,6 +14,18 @@ public class Usuario {
 	private String telefone;
 	private String senha;
 	private Date dataCadastro;
+	List<Usuario> list = new ArrayList<Usuario>();	
+	
+	public List<Usuario> remover(String nome) {
+		Iterator<Usuario> iterator = list.iterator();
+		while(iterator.hasNext()) {
+			Usuario usuario = iterator.next();
+			if(usuario.getNome() == nome) {
+				iterator.remove();
+			}
+		}
+		return list;
+	}
 	
 	//Construtor
 	public Usuario(String nome, String senha) {
@@ -78,6 +93,8 @@ public class Usuario {
 			System.out.println("Nome do usuario: " + usuario.getNome());
 			System.out.println("Data de cadastro: " + usuario.getDataCadastro());
 		}
+		
+		
 	}
 
 }
